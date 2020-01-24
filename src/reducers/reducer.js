@@ -1,55 +1,16 @@
-// import {FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR} from '../actions/action';
-
-// const initialState = {
-//     pending: false,
-//     products: [],
-//     error: null
-// }
-
-// export function productsReducer(state = initialState, action) {
-//     switch(action.type) {
-//         case FETCH_PRODUCTS_PENDING: 
-//             return {
-//                 ...state,
-//                 pending: true
-//             }
-//         case FETCH_PRODUCTS_SUCCESS:
-//             return {
-//                 ...state,
-//                 pending: false,
-//                 products: action.payload
-//             }
-//         case FETCH_PRODUCTS_ERROR:
-//             return {
-//                 ...state,
-//                 pending: false,
-//                 error: action.error
-//             }
-//         default: 
-//             return state;
-//     }
-// }
-
-// export const getProducts = state => state.products;
-// export const getProductsPending = state => state.pending;
-// export const getProductsError = state => state.error;
-import { INCREMENT, GET } from "../actions/action";
+import { getAll, GET, DELETE } from "../actions/action";
 
 const initialState = {
-  count: 0,
-  data: [],
+  directorsData: [],
+  director: { id: "", director_name: "" }
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case INCREMENT:
-      return { ...state, count: state.count + action.payload };
-    
     case GET:
-        return {...state, data: action.payload }
+      return { directorsData: action.json };
+
     default:
       return state;
   }
 };
-
-export const getDirectors = state => state.data;
